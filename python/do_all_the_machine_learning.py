@@ -1,8 +1,8 @@
 import sys
 import os
 
-from manipulation import transform_features, save_to_db
-from machine_learning import its_a_linear_regression
+from python.manipulation import transform_features, save_to_db
+from python.machine_learning import its_a_linear_regression
 
 input_file = os.path.abspath(sys.argv[1])
 output_file = input_file.replace(".json",".joblib")

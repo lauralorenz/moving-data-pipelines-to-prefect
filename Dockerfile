@@ -7,5 +7,6 @@ RUN sqlite3 scary_model_storage.db "create table models(id integer primary key a
 COPY requirements.txt /home/requirements.txt
 RUN pip install -r /home/requirements.txt
 
-COPY ./jobs/24-hours.sh /home/24-hours.sh
-COPY ./python /python
+COPY ./python /home/python
+COPY setup.py /home/setup.py
+RUN cd /home && pip install .
