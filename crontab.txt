@@ -1,0 +1,2 @@
+0 */24 * * * cd /Users/hooloovoo/Development/moving-data-pipelines-to-prefect && DB_NAME=scary_model_storage.db ./24-hrs.sh >> /var/log/24-hrs.log 2>&1
+0 */12 * * * cd /Users/hooloovoo/Development/moving-data-pipelines-to-prefect && DB_NAME=scary_model_storage.db ./12-hrs.sh >> /var/log/12-hrs.log 2>&1
