@@ -1,6 +1,7 @@
 from prefect import Flow, Task, task, Parameter, unmapped
 from prefect.environments.storage import Docker
 from prefect.triggers import always_run
+import prefect
 
 from python.manipulation import extract
 
@@ -18,6 +19,8 @@ def flow_pieces(filenames, db_name):
 		df = transform_features(filename)
 		its_a_linear_regression(df, output_file)
 		save_to_db(db_name, output_file)
+	logger = prefect.context.get("logger")
+	logger.info("Ending. Have a nice day!")
 
 # @task
 # def extract_filenames():

@@ -2,9 +2,12 @@ import pandas as pd
 import sqlite3
 import requests
 from prefect import task
+import prefect
 
 @task
 def extract(url, file_number):
+	logger = prefect.context.get("logger")
+	logger.info("Downloading data...")
 	response = requests.get(url)
 	filename = f"data-{file_number}.json"
 	with open(filename, 'wt') as f:
