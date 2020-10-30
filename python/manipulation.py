@@ -1,7 +1,9 @@
 import pandas as pd
 import sqlite3
 import requests
+from prefect import task
 
+@task
 def extract(url, file_number):
 	response = requests.get(url)
 	filename = f"data-{file_number}.json"

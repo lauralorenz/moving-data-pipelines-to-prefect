@@ -1,6 +1,8 @@
-from prefect import Flow, Task, task, Parameter
+from prefect import Flow, Task, task, Parameter, unmapped
 from prefect.environments.storage import Docker
 from prefect.triggers import always_run
+
+from python.manipulation import extract
 
 @task
 def flow_pieces(filenames, db_name):
@@ -17,18 +19,18 @@ def flow_pieces(filenames, db_name):
 		its_a_linear_regression(df, output_file)
 		save_to_db(db_name, output_file)
 
-@task
-def extract_filenames():
-	from python.manipulation import extract
-	filenames = []
-	for i in [1,2,3]:
-		filenames.append(extract("https://next.json-generator.com/api/json/get/Vy7eluVOK", i))
-	return filenames
+# @task
+# def extract_filenames():
+# 	filenames = []
+# 	for i in [1,2,3]:
+# 		filenames.append(extract(, i))
+# 	return filenames
 
 
 with Flow("shiny new flow", storage=Docker(base_image="spookyimage-shiny", local_image=True)) as f:
 	db_name = Parameter('db_name', default="scary_model_storage.db")
-	filenames = extract_filenames()
+	url = Parameter('url', default="https://next.json-generator.com/api/json/get/Vy7eluVOK")
+	filenames = extract.map(unmapped(url), [1,2,3])
 	flow_pieces(filenames, db_name)
 
 
