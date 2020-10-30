@@ -2,7 +2,7 @@
 
 1. Decide what you're willing to spend the time to move to Python, if your legacy code is in more than one language
 
-2. Figure out your dependencies
+2. Figure out your dependencies: **Python dependencies added to requirements.txt; bash dependency is zsh**
 	 - requirements/Piplock files
 	 - pipfreeze / conda list
 	 - pipdeptree
@@ -11,7 +11,7 @@
 2a. Build a Docker image and make sure your scripts still run in them
 
 3. Analyze your crontab as a basis for Schedules
-    - also consider changing your flow based on overlap in the scripts
+	- also consider changing your flow based on overlap in the scripts
 
 4. Decide how you want to convert everything into Tasks
 	- ShellTask, bare metal
@@ -25,6 +25,6 @@
 	 - configure your own logging module loggers
 
 6. Deal with your Python path!!
-	 - Package your code up
-	 - Use Prefect configs to handle your Python path
-	 - Fall back on the dreaded `sys.path`
+	- Package your code up
+	- Use Prefect configs to handle your Python path
+	- Fall back on the dreaded `sys.path`
