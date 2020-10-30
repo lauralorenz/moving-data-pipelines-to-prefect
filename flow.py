@@ -11,6 +11,7 @@ from prefect.triggers import always_run
 container = CreateContainer(
     image_name="spookyimage",
     command='''/home/24-hours.sh''',
+    environment=["DB_NAME=scary_model_storage.db"]
 )
 start = StartContainer()
 logs = GetContainerLogs(trigger=always_run)
