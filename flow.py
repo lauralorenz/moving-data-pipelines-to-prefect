@@ -4,7 +4,7 @@ from prefect.triggers import always_run
 
 from python.manipulation import extract
 
-@task
+@task(log_stdout=True)
 def flow_pieces(filenames, db_name):
 	import sys
 	import os
