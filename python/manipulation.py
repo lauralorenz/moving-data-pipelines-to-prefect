@@ -1,5 +1,13 @@
 import pandas as pd
 import sqlite3
+import requests
+
+def extract(url, file_number):
+	response = requests.get(url)
+	filename = f"data-{file_number}.json"
+	with open(filename, 'wt') as f:
+		f.write(response.text)
+	return filename
 
 def transform_features(filename):
 	df = pd.read_json(filename)
