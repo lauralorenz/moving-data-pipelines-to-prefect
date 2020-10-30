@@ -1,6 +1,6 @@
 # Dealing with legacy pipelines
 
-1. Decide what you're willing to spend the time to move to Python, if your legacy code is in more than one language
+1. Decide what you're willing to spend the time to move to Python, if your legacy code is in more than one language: **PRETTY MUCH NOTHING**
 
 2. Figure out your dependencies: **Python dependencies added to requirements.txt; bash dependency is zsh**
 	 - requirements/Piplock files
@@ -8,12 +8,12 @@
 	 - pipdeptree
 	 - literally reading the code
 
-2a. Build a Docker image and make sure your scripts still run in them
+2a. Build a Docker image and make sure your scripts still run in them: **`docker build -t spookyimage .`**
 
 3. Analyze your crontab as a basis for Schedules
 	- also consider changing your flow based on overlap in the scripts
 
-4. Decide how you want to convert everything into Tasks
+4. Decide how you want to convert everything into Tasks: **Running Docker container only**
 	- ShellTask, bare metal
 	- Shell Task + Docker agent
 	- For pure Python tasks: `@task` decorators vs `Task` classes
